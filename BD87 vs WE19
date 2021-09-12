@@ -1,0 +1,31 @@
+BD87 : Process inbound IDocs
+
+Using the Error number, the IDoc number and the transaction BD87, with the required message type you can reprocess the IDoc. Match the error number with this transaction and execute the function for the IDocs incorrectly processed.
+
+WE19 : IDoc: Test tool inbound
+
+Use transaction WE19 to test inbound function module in debugging mode. Also use WE05 to view the IDocs and their statuses.
+
+The test tool is a two-step process. In the first step, you create an IDoc by using one of the following options :
+
+Copy an existing IDoc.
+
+Create an IDoc based on an IDoc type.
+
+Create an IDoc based on a message type.
+
+Create an IDoc using a file as a template.
+
+Create an IDoc with no template.
+
+The option you choose depends on your tastes and program requirements. The first option is most commonly used because it enables you to modify an existing IDoc (inbound or outbound) to suit your needs.
+
+In the second step, the IDoc created is passed to the inbound process. You have several options to select the method of starting the inbound process :
+
+Start the inbound processing via the standard path. This method uses all inbound components.
+
+Call the inbound function module directly. The system bypasses the checks for partner profile and hands the IDoc data to your inbound function module directly. This method is useful for testing an inbound process without having to maintain any inbound configuration. You can also start the function module in debug mode and select the processing
+
+option for your posting module.
+
+Save the IDoc in a file, and start the inbound process. This method is similar to the first method except that you also create an IDoc file at the operating system level. This method is used mainly for EDI processes.
