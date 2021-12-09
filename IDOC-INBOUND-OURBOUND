@@ -1,0 +1,47 @@
+IDOC Steps
+
+IDOC structure : Control Record / Data Record / status Record.
+Control Record has Direction/Status/Basic type/Extension/Message type/Partner No./Partner type/port
+Data Record has data in defined segments.
+Status Displays all status
+
+Segment : A segment defines the format and structure of a data record
+Message type: describes the type of business document in an SAP system
+
+Outbound
+We31 - Segment
+We30 - Idoc type (Assign Segment to Idoc type)
+We81 - Message type
+WE82- Assign Idoc type to Message type
+
+SALE - Define Logical System
+SM59 - Create RFC Destination ( TCP/IP) 
+We21 - Create Port ( assign RFC dest to Port ) 
+We20 - Create Partner Profile 
+( Assign Port , Logical system , Message type )
+BD57 - Push Outbound Idoc
+We05 - Outbound Idoc List /
+_______________________________________
+Inbound
+We31 - Create Segment
+We30 - Create Idoc type & assign Segment
+We81 - Create Message type
+We82 - Assign Idoc type to Message type
+
+** User exit VSV00001 - EXIT_SAPLKD01_001 for cremas for custom login 
+SE37 - Create FM 
+
+We57 - Assign FM to Idoc type & Message type
+
+BD51 - Define Characterstic for IB FM
+We42 - Define Process Code 
+
+
+We31 - ZGSGTYP
+We30 - ZGIDTYP ( Segment assigned to Idoc type) 
+WE81 - ZGLMTTST - EDI Logical Message type
+WE82 - Assign Idoc to Logical Message type
+SALE - 
+SM59 - D91MATUPDATE
+WE21 - ZGPORT122 Transactional RFC
+WE20 - ZGPARTNER Create P[=artner Profile
