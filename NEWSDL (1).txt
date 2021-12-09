@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.example.com/1422876198538" xmlns:jndi="http://www.tibco.com/namespaces/ws/2004/soap/apis/jndi" xmlns:ns0="http://www.jio.ril.com/integration/services/fulfillment/NotificationManagement/" xmlns:ns2="http://www.jio.ril.com/integration/services/fulfillment/schema/NotificationManagement/" xmlns:ns1="http://www.jio.ril.com/information/CanonicalDataModel/NotificationManagement/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap1="http://schemas.xmlsoap.org/wsdl/soap12/" name="Untitled" targetNamespace="http://xmlns.example.com/1422876198538">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.jio.ril.com/integration/services/fulfillment/NotificationManagement/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:import namespace="http://www.jio.ril.com/information/CanonicalDataModel/NotificationManagement/"/>
+            <xs:import namespace="http://www.jio.ril.com/integration/services/fulfillment/schema/NotificationManagement/"/>
+            <xs:complexType name="InternalExceptionCollection">
+                <xs:sequence>
+                    <xs:element name="InternalExceptionElement" form="unqualified" type="ns1:InternalException" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="handleNotification">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="handleNotificationRequest" form="unqualified" type="ns2:HandleNotificationRequest" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="handleNotificationException" type="ns0:InternalExceptionCollection"/>
+            <xs:element name="handleNotificationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="handleNotificationResponse" form="unqualified" type="ns2:HandleNotificationResponse" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd_1="http://www.jio.ril.com/information/CanonicalDataModel/NotificationManagement/" targetNamespace="http://www.jio.ril.com/information/CanonicalDataModel/NotificationManagement/" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+            <xsd:complexType name="BusinessInteraction">
+                <xsd:annotation>
+                    <xsd:documentation>A BusinessInteraction is an arrangement, contract, communication or joint activity between one or more PartyRoles, ResourceRoles, or CustomerAccounts. A BusinessInteraction may consist of one or more BusinessInteractionItems. A BusinessInteractionItem may refer to a Product, Service, Resource, or one of their specifications. A BusinessInteraction is further defined by one or more Places. One BusinessInteraction may reference another BusinessInteraction and one BusinessInteractionItem may reference another BusinessInteractionItem on the same or different BusinessInteraction. There are five types of BusinessInteractions: Requests, Responses, Notifications, Agreements, and Instructions.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="id" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Unique identifier for Interaction.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="name" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="description" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Narrative that explains the interaction and details about the interaction, such as why the interaction is taking place.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="BusinessInteractionType">
+                <xsd:annotation>
+                    <xsd:documentation>The possible types of BusinessInteractions that can occur. BusinessInteractionTypes can be with the associated BusinessParticipantTypes that can participate in a BusinessInteraction.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="id" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Catalog ID</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="name" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>The name of an Interaction Type, such as Customer Inquiry, Customer Quote/Offer, Trouble Report.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="description" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>A brief narrative that describes an Interaction Type.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ContactMedium">
+                <xsd:sequence>
+                    <xsd:element name="item" type="xsd_1:item" minOccurs="0" maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="InternalException">
+                <xsd:sequence>
+                    <xsd:element name="reason" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="code" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="details" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Notification">
+                <xsd:annotation>
+                    <xsd:documentation>A communication that informs about something that has or will happen. A Notification is typically one-sided, in that no Response is expected. A Notification can be created as the result of a Request; for example, a Trouble Report may result in Notifications being sent to affected Parties. A Notification is a type of Business Interaction.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="id" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Unique identifier for Interaction.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="description" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Narrative that explains the interaction and details about the interaction, such as why the interaction is taking place.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="interactionDate" type="xsd:dateTime" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Date interaction initiated.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="referenceKey" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="type" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="businessInteraction" type="xsd_1:BusinessInteraction" minOccurs="0"/>
+                    <xsd:element name="businessInteractionType" type="xsd_1:BusinessInteractionType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="item">
+                <xsd:sequence>
+                    <xsd:element name="value" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>the time period that the Contact Medium is valid for</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="type" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd_1="http://www.jio.ril.com/integration/services/fulfillment/schema/NotificationManagement/" xmlns:xsd_2="http://www.jio.ril.com/information/CanonicalDataModel/NotificationManagement/" targetNamespace="http://www.jio.ril.com/integration/services/fulfillment/schema/NotificationManagement/" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+            <xsd:import namespace="http://www.jio.ril.com/information/CanonicalDataModel/NotificationManagement/"/>
+            <xsd:complexType name="HandleNotificationRequest">
+                <xsd:sequence>
+                    <xsd:element name="notification" type="xsd_2:Notification" minOccurs="0"/>
+                    <xsd:element name="contactMedium" type="xsd_2:ContactMedium" minOccurs="0"/>
+                    <xsd:element name="notificationPayload" type="xsd:anyType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="HandleNotificationResponse"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="handleNotificationRequest">
+        <wsdl:part name="parameters" element="ns0:handleNotification"/>
+    </wsdl:message>
+    <wsdl:message name="handleNotificationResponse">
+        <wsdl:part name="parameters" element="ns0:handleNotificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="handleNotificationException">
+        <wsdl:part name="handleNotificationException" element="ns0:handleNotificationException"/>
+    </wsdl:message>
+    <wsdl:portType name="NotificationManagementV1dot2">
+        <wsdl:operation name="handleNotification">
+            <wsdl:input message="tns:handleNotificationRequest"/>
+            <wsdl:output message="tns:handleNotificationResponse"/>
+            <wsdl:fault name="handleNotificationException" message="tns:handleNotificationException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="NotificationManagementV1dot2Endpoint1Binding" type="tns:NotificationManagementV1dot2">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="handleNotification">
+            <soap:operation style="document" soapAction="/generateContent"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="handleNotificationException">
+                <soap:fault use="literal" name="handleNotificationException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="NotificationManagement">
+        <wsdl:port name="NotificationManagementV1dot2Endpoint1" binding="tns:NotificationManagementV1dot2Endpoint1Binding">
+            <soap:address location="http://localhost:10142/NotificationManagement.serviceagent/NotificationManagement"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
