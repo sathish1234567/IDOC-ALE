@@ -1,0 +1,21 @@
+webservice:
+1. not supporting the json format
+2. mainly action based, methods created in side the proxy class set/get/
+
+Rest service
+1. resource(url) based,
+2. we can get the data model--> in json/xml
+
+OOABAP:
+Interfaces:
+-- BADI's / rest service ...
+
+ABstract class:
+-- 
+base class protected method <-- sub class<--
+
+TR moment: 
+U-- deployment tool...  image object create-- 
+
+https://help.sap.com/erp_hcm_ias2_2014_03/helpdata/en/c1/54dae3daa84deda5ba3de46425832f/frameset.htm 
+https://wiki.scn.sap.com/wiki/display/ABAPConn/ABAP+Web+Service+Monitors
